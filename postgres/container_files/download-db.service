@@ -1,0 +1,8 @@
+[Unit]
+Description=Download IMDB
+
+[Service]
+ExecStart=/usr/local/bin/download-db.sh
+
+[Install]
+WantedBy=multi-user.target
