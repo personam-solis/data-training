@@ -12,7 +12,7 @@ docker run -d \
     --cpus 4 \
     --health-timeout 30s \
     --memory 16g \
-    -v /var/lib/postgresql/data:imdb \
+    --mount source=imdb,target=/var/lib/postgresql/data \
     --name imdb \
     postgres-imdb:latest
 
