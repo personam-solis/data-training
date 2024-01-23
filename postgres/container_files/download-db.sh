@@ -12,4 +12,6 @@ if [[ ! -e /imdb_dump ]]; then
         https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/2QYZBT/TGYUNU
 
     chmod -fv 777 /imdb_dump
+
+    ls -lAh /imdb_dump
 fi
