@@ -7,4 +7,4 @@ pg_restore -v --exit-on-error \
 	--jobs 4\
 	--username "$POSTGRES_USER" \
 	--dbname "$POSTGRES_DB" \
-	/var/lib/postgresql/data/imdb_dump
+	/var/lib/postgresql/imdb_dump
