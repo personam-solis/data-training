@@ -7,7 +7,7 @@ if ! docker volume inspect imdb; then
     docker volume create imdb
 fi
 
-docker run -d \
+docker run --rm -d \
     -p 5400:5432  \
     --cpus 4 \
     --health-timeout 30s \
