@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ls -lAh /var/lib/postgresql/imdb_dump
+
 echo "Importing the database"
 
 pg_restore -v --exit-on-error \
