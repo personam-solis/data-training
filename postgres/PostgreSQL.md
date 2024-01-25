@@ -1,0 +1,65 @@
+# **PostgreSQL**
+
+<br>
+<br>
+
+## **Useful Admin**
+These are all things that an admin will find helpful. Please keep in mind that most of these might need OS `root` or DB `postgres` access.
+
+<br>
+
+### **Info**
+Things to keep in mind
+
+* **Tablespaces** are sym linked inside of `$PGDATA/pg_tblspc` to map it back to the DB
+  * This is important because the Tablespace can be *ANYWHERE* on the host.
+* *Users* and *Groups* are 'Roles'
+* You can create a group role simply by adding a flag that it can inherit. Afterwards, grant it access like normal and then add roles to it
+  * `CREATE ROLE <ROLE_NAME> INHERIT;`
+  * `GRANT <PERMISSIONS> TO <GROUP_ROLE>`
+  * `GRANT <GROUP_ROLE> TO <EXISTING_ROLE;`
+
+<br>
+
+### **Introspection Commands**
+Common and useful introspection commands
+| Command | Purpose | Notes |
+|---------|---------|-------|
+| `\?` | Shows all introspection commands | |
+| `\h <KEYWORD>` | Get help on a SQL statement | |
+| `\l+` | *List* all databases | |
+| `\c <DB>` | *Connect* to another database | Changes the local namespace |
+| `\errverbose` | Shows the last error message verbosely | |
+| `\d+` | *Describe* tables and views for current database | Only for what the user has access to. |
+| `\z` | Describe table, view, and sequence access privileges | same as `\dp` |
+| `\dy+` | Describe event triggers | |
+| `\dS+` | Describe system tables | Most useful for showing all system tables in the system `postgres` database |
+| `\x` | Turn on *expanded* display (toggle) | Show results as a list instead of a table. Useful for long columns |
+
+<br>
+
+### **Admin Queries/Commands**
+These are some basic queries that are common and useful from an administrative perspective.
+
+| Query/Command | Purpose | Notes |
+|---------------|---------|-------|
+| `SELECT pid, wait_event_type, wait_event, state, query FROM pg_stat_activity WHERE wait_event IS NOT NULL AND state IS NOT Null;` | Get all queries that are running on active connections | You can use this to kill conn. that are running too long |
+| `CREATE DATABASE <NEW_DB> TEMPLATE <EXISTING_DB>;` | Create a copy of an existing database | |
+| `SELECT pg_size_pretty(pg_database_size(pg_database.datname)) AS size, pg_database.datname AS db_name FROM pg_database;` | Get the size of all databases | |
+| `<COLUMN_NAME> int GENERATED ALWAYS AS IDENTITY, PRIMARY KEY ( <COLUMN_NAME> )` | When creating a table, have postgres auto-assign an integer and use that as the Primary Key |  |
+
+<br>
+
+### **Shell Commands**
+Commands used from the OS. This uses postgres utilities that are installed alongside the database engine.
+
+| Command | Purpose | Notes |
+|---------|---------|-------|
+| `oid2name` | Map the Main Object ID in a directory with a database and tablespace | Used to determine which OID in `$PGDATA/base` belongs to what |
+| `oid2name -d <database>` | Search through `$PGDATA/base` for the database you want, and map FileNode to specific table | Since files in the dir cannot be >1GB, an extension is added to the FileNode `$PGDATA/base/<OID>/<FileNode>.<Integer>` |
+| `oid2name -s` | Show all Tablespace OID's | |
+
+<br>
+<br>
+
+## **Useful DB Queries**

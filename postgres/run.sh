@@ -18,6 +18,8 @@ docker run --rm -d \
 
 sleep 10
 
+
+
 docker container logs --follow imdb
 
 docker container ls -a
