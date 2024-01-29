@@ -12,12 +12,7 @@ These are some basic notes for PostgreSQL. Although you can run the below comman
 <br>
 <br>
 
-## **Useful Admin**
-These are all things that an admin will find helpful. Please keep in mind that most of these might need OS `root` or DB `postgres` access. 
-
-<br>
-
-### **Info**
+## **Info**
 Things to keep in mind
 
 * **Tablespaces** are sym linked inside of `$PGDATA/pg_tblspc` to map it back to the DB
@@ -30,7 +25,7 @@ Things to keep in mind
 
 <br>
 
-### **Introspection Commands**
+## **Introspection Commands**
 Common and useful introspection commands
 | Command | Purpose | Notes |
 |---------|---------|-------|
@@ -48,7 +43,7 @@ Common and useful introspection commands
 
 <br>
 
-### **Admin Queries/Commands**
+## **Admin Queries/Commands**
 These are some basic queries that are common and useful from an administrative perspective.
 
 | Query/Command | Purpose | Notes |
@@ -62,7 +57,7 @@ These are some basic queries that are common and useful from an administrative p
 
 <br>
 
-### **Shell Commands**
+## **Shell Commands**
 Commands used from the OS. This uses postgres utilities that are installed alongside the database engine.
 
 | Command | Purpose | Notes |
@@ -75,13 +70,32 @@ Commands used from the OS. This uses postgres utilities that are installed along
 
 <br>
 
-## **Useful DB Queries**
+## **Useful DB Queries/Commands**
 
 These are some basic queries that are common and useful to general users.
 
 | Query/Command | Purpose | Notes |
 |---------------|---------|-------|
 | `SET search_path TO <SCHEMA>;` | Change the current search path | You can always use fully qualified objects `schema.object_name` |
+| `SELECT schemaname, tablename, tableowner FROM pg_tables WHERE schemaname NOT IN ('pg_catalog', 'information_schema') ORDER BY schemaname DESC;` | Show all tables across all schemas that are not part of the system | |
+
+<br>
+
+<br>
+
+## **Functions**
+
+<br>
+
+<br>
+
+## **Triggers**
+
+<br>
+
+<br>
+
+## **Partition**
 
 <br>
 
