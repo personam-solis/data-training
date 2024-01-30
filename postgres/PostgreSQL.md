@@ -35,10 +35,13 @@ Common and useful introspection commands
 | `\c <DB>` | *Connect* to another database | Changes the local namespace |
 | `\errverbose` | Shows the last error message verbosely | |
 | `\d+` | *Describe* tables and views for current database | Only for what the user has access to. |
-| `\z` | Describe table, view, and sequence access privileges | same as `\dp` |
-| `\dy+` | Describe event triggers | |
+| `\dg+` | Describe roles | |
+| `\dE+` | Describe foreign tables | |
 | `\dn+` | Describe schemas in the current database | |
+| `\dy+` | Describe event triggers | |
 | `\dS+` | Describe system tables | Most useful for showing all system tables in the system `postgres` database |
+| `\sv+ <VIEW_NAME>` | Show the list view definition | |
+| `\z` | Describe table, view, and sequence access privileges | same as `\dp` |
 | `\x` | Turn on *expanded* display (toggle) | Show results as a list instead of a table. Useful for long columns |
 
 <br>
@@ -109,3 +112,8 @@ Schemas contain database objects such as tables, views, indexes, data types, fun
 Each schema is its own namespace; there are no conflict with objects across schemas, but they can in the schema. You can switch between namespaces, but if you need to reference multiple schemas or ones with name conflicts, use the full object name.
 
 To access an object regardless of search path.: `schema_name.object_name`
+
+<br>
+
+**View**
+In its simplest form, a view is a query that is atomatically executed when you access the table.
