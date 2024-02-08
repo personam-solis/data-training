@@ -57,6 +57,8 @@ These are some basic queries that are common and useful from an administrative p
 | `<COLUMN_NAME> int GENERATED ALWAYS AS IDENTITY, PRIMARY KEY ( <COLUMN_NAME> );` | When creating a table, have postgres auto-assign an integer and use that as the Primary Key |  |
 | `CREATE SCHEMA IF NOT EXISTS <NAME> AUTHORIZATION <ROLE>;` | Create a schema and add the role to it | |
 | `ALTER TABLE <TABLE> SET SCHEMA <SCHEMA>;` | Add an existing table to a schema | *WARNING: You can break everything if you do this. Understand ALL views, functions, and Triggers.* |
+| `SELECT inet_server_addr();` | Get the IP(s) that the server listens on | |
+| `SELECT inet_server_port();` | Get the port that the server listens on | |
 
 <br>
 
